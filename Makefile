@@ -1,3 +1,5 @@
+TAG = master
+
 all:
 	$(MAKE) -j 2 \
 		_build/linux-amd64/helloworld.$(TAG).linux-amd64.tar.gz \
