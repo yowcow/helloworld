@@ -1,0 +1,17 @@
+language: go
+
+go:
+  - 1.x
+
+before_deploy:
+  - make
+
+deploy:
+  provider: releases
+  api_key:
+  file:
+    - _build/linux-amd64/helloworld.${TRAVIS_TAG}.linux-amd64.tar.gz
+    - _build/darwin-amd64/helloworld.${TRAVIS_TAG}.darwin-amd64.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
