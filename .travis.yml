@@ -1,17 +1,19 @@
 language: go
 
 go:
-  - 1.x
+- 1.x
 
 before_deploy:
-  - make
+- make TAG=${TRAVIS_TAG}
 
 deploy:
   provider: releases
   api_key:
+    secure: B/PUxawAS2x97HYxeUFoQ6Q9j4DZzu/RqR9uzpOKqdsadOHYPKNY2WFetJ4z8ZGtkey+q1bHNgFABqsdgVKHXAEnxCPkMK8sPHMmQ4fzZVcE9jBOK+l6JRRZk73BRXXgl4doYvwAUtM4r7B0cC9xirQwFavqSqZasGf/ktfWLy+5sNb2McXXueILwo5XxShEOfwjyDlh5MaBbrVRMAjCOyZQGdSgFiAo3d2jCwlyiiC20FxwHWLlDSywnEnyaa+g5XdaFC7zq5fxK8sWHJqAYdlDnhe4WLXxm5Admal56Twzbl/lnXjWkgVO4tab3QRUZ2cf03fE5l4sAtXfpI3XFCe0FbAw17nGe5K5uhtoleBkhpeRxBnCBwRGdLw0zy5tuPl63xCps0xV/2wkrrlfJDLv4IFDqD5F1SiEGYhV1mdDNl2mfiJuOPtwQSISPrMOOkR125H8xtVUmz9l6ZmnYkzEkHbSUVSuGE1+OudVNF4lYHP0kii4R7bo55avkg0F2qe05Bflw+62alDl0v4w9gtF43NF86NDinCVyyZZ1wTtscqrA5o5RB+pwJK3DmQOOtaIGWa/HzHMxcCHmxUgWhLHp6kW64+zDPj1z/mQrZICdyETb0XkrIAYD9bTdTMgeEBA2yYihpM0n4/LE3hUPcuqnvXJzHWMZdIu0+3Jg+c=
   file:
     - _build/linux-amd64/helloworld.${TRAVIS_TAG}.linux-amd64.tar.gz
     - _build/darwin-amd64/helloworld.${TRAVIS_TAG}.darwin-amd64.tar.gz
   skip_cleanup: true
   on:
     tags: true
+    repo: yowcow/helloworld
