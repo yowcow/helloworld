@@ -30,7 +30,8 @@ func main() {
 
 	handler := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		log.Println(req.Method, req.URL)
-		fmt.Fprintf(w, "Hello world")
+		w.Header().Set("X-Hello-World-Version", version)
+		fmt.Fprintln(w, "Hello world")
 	})
 	svr := http.Server{
 		Addr:    addr,
