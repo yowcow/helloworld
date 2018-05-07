@@ -1,4 +1,4 @@
-TAG = master
+TAG = $(shell git rev-parse --short HEAD)
 
 all:
 	$(MAKE) -j 3 \
