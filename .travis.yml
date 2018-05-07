@@ -4,6 +4,7 @@ go:
 - 1.x
 
 before_deploy:
+- make clean
 - make TAG=${TRAVIS_TAG}
 
 deploy:
