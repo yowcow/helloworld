@@ -8,16 +8,24 @@ import (
 	"os"
 )
 
+var version = "version-string"
+
 func main() {
 	var addr string
 	var help bool
-	flag.StringVar(&addr, "addr", ":9990", "address to bind")
-	flag.BoolVar(&help, "help", false, "help")
+	var ver bool
+	flag.StringVar(&addr, "a", ":9990", "address to bind")
+	flag.BoolVar(&help, "h", false, "print help")
+	flag.BoolVar(&ver, "v", false, "print version")
 	flag.Parse()
 
 	if help || addr == "" {
 		flag.Usage()
 		os.Exit(1)
+	}
+	if ver {
+		fmt.Println(version)
+		os.Exit(0)
 	}
 
 	handler := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
